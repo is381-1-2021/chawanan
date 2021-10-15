@@ -1,4 +1,6 @@
+import 'package:first_app/models/form_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/fifth_page.dart';
 import 'pages/first_page.dart';
@@ -8,10 +10,17 @@ import 'pages/seventh_page.dart';
 import 'pages/sixth_page.dart';
 import 'pages/third_page.dart';
 
-
-
 void main() {
-  runApp(MyApp());
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => FormModel(),     
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,13 +29,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.amber[200],
-        accentColor: Colors.green,
+        appBarTheme: AppBarTheme(color: Colors.amber,),
+        primaryColor: Colors. amber,
         textTheme: TextTheme(
           bodyText2: TextStyle(color: Colors.purple),
         ),
       ),
-      initialRoute: '/1',
+      initialRoute: '/5',
       routes: <String, WidgetBuilder> {
         '/1' : (context) => FirstPage(),
         '/2' : (context) => SecondPage(),

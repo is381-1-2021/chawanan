@@ -1,32 +1,27 @@
-name: midterm
+name: midterm_app
 description: A new Flutter project.
 
 publish_to: 'none' 
+
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-    flutter:
-      sdk: flutter
-    provider: ^4.0.4
-
-cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  google_maps_flutter: ^2.0.9
+  provider: ^6.0.1
 
 dev_dependencies:
+  flutter_launcher_icons:
   flutter_test:
     sdk: flutter
- 
-  flutter_lints: ^1.0.0
+
+flutter_lints: ^1.0.0
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/cat1.jpg
-    - assets/cat2.jpg
-    - assets/cat3.jpg
-    - assets/cat4.jpg
-    - assets/cat5.jpg
-    - assets/cat6.jpg
-    - assets/cathome.png
+    - assets/

@@ -1,4 +1,7 @@
+import 'package:first_app/models/form_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 class SixthPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
           onSaved: (value) {
             _firstname = value!;
           },
+          initialValue: context.read<FormModel>().firstName,
         ),
         TextFormField(
           decoration: InputDecoration(
@@ -57,6 +61,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
           onSaved: (value) {
             _lastname = value!;
           },
+          initialValue: context.read<FormModel>().lastName, //initialเป็นstring
         ),
         TextFormField(
           decoration: InputDecoration(
@@ -83,15 +88,18 @@ class _MyCustomFormState extends State<MyCustomForm> {
           onSaved: (value) {
             _age = int.parse(value!);
           },
+          initialValue: context.read<FormModel>().age.toString(), //intใช้ .toString
         ),
         ElevatedButton(
           onPressed: () {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState!.save();
         
-            var response = '$_firstname $_lastname $_age';
-          
-            Navigator.pop(context, response);
+            context.read<FormModel>().firstName = _firstname; //read provider
+            context.read<FormModel>().lastName = _lastname;
+            context.read<FormModel>().age = _age;
+
+            Navigator.pop(context);
           }  
         },
         child: Text('Submit'),

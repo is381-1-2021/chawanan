@@ -42,7 +42,7 @@ class _FoundFormPage extends State<FoundFormPage> {
             }
           },
           onSaved: (value) {
-            _nameofcat = value;
+            _nameofcat = value!;
           },
         ),
         TextFormField(
@@ -56,7 +56,7 @@ class _FoundFormPage extends State<FoundFormPage> {
             }
           },
           onSaved: (value) {
-            _name = value;
+            _name = value!;
           },
         ),
         TextFormField(
@@ -70,12 +70,11 @@ class _FoundFormPage extends State<FoundFormPage> {
             }
            },
           onSaved: (value) {
-            _where = value;
+            _where = value!;
           },
         ),
         TextFormField(
           decoration: InputDecoration(
-            icon: Icon(Icons.speed),
             hintText: 'อายุ',
             labelText: 'Age',
           ),
@@ -96,7 +95,7 @@ class _FoundFormPage extends State<FoundFormPage> {
             var b = '';
           },
           onSaved: (value) {
-            _age = int.parse(value);
+            _age = int.parse(value!);
           },
         ),
         TextFormField(
@@ -110,7 +109,7 @@ class _FoundFormPage extends State<FoundFormPage> {
             }
           },
           onSaved: (value) {
-            _tel = value;
+            _tel = value!;
           },
         ),
         ElevatedButton(
@@ -119,14 +118,23 @@ class _FoundFormPage extends State<FoundFormPage> {
           ),
         child: Text('Submit',style: TextStyle(color: Colors.white),),
           onPressed: () {
+            final isValid = _formKey.currentState.validate();
           if (_formKey.currentState.validate()) {
             _formKey.currentState.save();
         
-            var response = 'successful';
+            final message = 'catname: $_nameofcat\nname: $_name\nwhere: $_where\ntel: $_tel\nage $_age';
+            final snackBar = SnackBar(
+              content: Text(
+              message,
+              style: TextStyle(fontSize: 15),),
+              backgroundColor: Colors.deepOrange[300],
+            );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+ var response = '$_nameofcat $_name $_where $_tel $_age';
           
-            Navigator.pop(context, response);
+            Navigator.pop(context, response); 
           }  
-        },
         ),
         ],
       ),
