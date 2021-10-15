@@ -5,24 +5,24 @@ class FormModel extends ChangeNotifier {
   String? _lastName;
   int? _age;
   
-  get firstName => this._firstName;
+  get firstName => _firstName;
 
   set firstName(value) {
-    this._firstName = value;
+    _firstName = value;
     notifyListeners();
   } 
 
-  get lastName => this._lastName;
+  get lastName => _lastName;
 
   set lastName(value) {
-    this._lastName = value;
+    _lastName = value;
     notifyListeners();
   }
 
-  get age => this._age;
+  get age => _age;
 
   set age(value) {
-    this._age = value;
+    _age = value;
     notifyListeners();
   }
 }

@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Colors.amber,),
+        appBarTheme: const AppBarTheme(color: Colors.amber,),
         primaryColor: Colors. amber,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodyText2: TextStyle(color: Colors.purple),
         ),
       ),
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -86,15 +86,15 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               height: 200.0,
               width: 200.0,
-              margin: EdgeInsets.only(bottom: 50.0),
-              padding: EdgeInsets.all(20.0),
+              margin: const EdgeInsets.only(bottom: 50.0),
+              padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration( 
                 color: Colors.blue.withOpacity(0.25),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: catOnShow,
             ),
-            Text(
+            const Text(
               'You have pushed the button this many times:',
             ),
             Text(
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _counter--;
                     });
                   },
-                  child: Text('ลด'),
+                  child: const Text('ลด'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _counter++;
                     });
                   },
-                  child: Text('เพิ่ม'),
+                  child: const Text('เพิ่ม'),
                 ),
               ],
             ),
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
