@@ -1,8 +1,11 @@
-import 'package:first_app/models/form_model.dart';
+import 'package:first_app/controllers/todo_controller.dart';
 import 'package:first_app/pages/eight_page.dart';
+import 'package:first_app/pages/todo_page.dart';
+import 'package:first_app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'models/form_model.dart';
 import 'pages/fifth_page.dart';
 import 'pages/first_page.dart';
 import 'pages/fourth_page.dart';
@@ -12,6 +15,25 @@ import 'pages/sixth_page.dart';
 import 'pages/third_page.dart';
 
 void main() {
+  var services = HttpServices();
+  var controller = TodoController(services);
+  
+  runApp(TodoApp(controller: controller));
+}
+
+class TodoApp extends StatelessWidget {
+  final TodoController controller;
+  TodoApp({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: TodoPage(controller: controller),
+    );
+  }
+}
+
+void main_old() {
   runApp(
       MultiProvider(
         providers: [
@@ -19,12 +41,14 @@ void main() {
             create: (context) => FormModel(),     
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
